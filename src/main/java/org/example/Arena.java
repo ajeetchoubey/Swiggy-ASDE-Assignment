@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Arena {
     private int totalPlayers;
+
     private Map<Integer, Player> players;
 
     public Arena() {
@@ -73,8 +74,7 @@ public class Arena {
         // Player entries
         for (Map.Entry<Integer, Player> entry : players.entrySet()) {
             Player player = entry.getValue();
-            System.out.printf("| %-5d | %-20s | %-8d | %-10d | %-6d |%n",
-                    entry.getKey(), player.getName(), player.getHealth(), player.getStrength(), player.getAttack());
+            System.out.printf("| %-5d | %-20s | %-8d | %-10d | %-6d |%n", entry.getKey(), player.getName(), player.getHealth(), player.getStrength(), player.getAttack());
         }
 
         System.out.println(); // Extra line for spacing
@@ -85,7 +85,7 @@ public class Arena {
     public Map<String, Integer> battle(int idFirst, int idSecond){
         if(idFirst == idSecond){
             System.out.println("Id's cannot be the same for both players!\n");
-            return new HashMap<>();
+            return new HashMap<>(); // returning an empty hashmap
         }else if(!players.containsKey(idFirst)){
             System.out.println("No player with id = " + idFirst + " exists!\n");
             return new HashMap<>();
