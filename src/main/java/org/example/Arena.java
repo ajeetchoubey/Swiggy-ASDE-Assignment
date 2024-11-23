@@ -66,16 +66,22 @@ public class Arena {
 
 //    method to display all the players present in the arena
     public void displayPlayers() {
-        System.out.println("|\tId\t|\tName\t|\tHealth\t|\tStrength\t|\tAttack\t|");
+        // Header
+        System.out.printf("| %-5s | %-20s | %-8s | %-10s | %-6s |%n", "Id", "Name", "Health", "Strength", "Attack");
+        System.out.println("|-------|----------------------|----------|------------|--------|");
+
+        // Player entries
         for (Map.Entry<Integer, Player> entry : players.entrySet()) {
             Player player = entry.getValue();
-            System.out.printf("|\t%d\t|\t%s\t|\t%d\t|\t%d\t|\t%d\t|%n",
+            System.out.printf("| %-5d | %-20s | %-8d | %-10d | %-6d |%n",
                     entry.getKey(), player.getName(), player.getHealth(), player.getStrength(), player.getAttack());
         }
-        System.out.println();
+
+        System.out.println(); // Extra line for spacing
     }
 
-//    method to start a battle
+
+    //    method to start a battle
     public Map<String, Integer> battle(int idFirst, int idSecond){
         if(idFirst == idSecond){
             System.out.println("Id's cannot be the same for both players!\n");
@@ -89,7 +95,7 @@ public class Arena {
         }else{
             Player attacker = players.get(idFirst);
             Player defender = players.get(idSecond);
-            System.out.printf("\n__________%s V/S %s__________", attacker.getAttack(), defender.getName());
+            System.out.printf("\n__________%s V/S %s__________\n", attacker.getName(), defender.getName());
 
             if(defender.getHealth() < attacker.getHealth()){
                 Player temp = attacker;
